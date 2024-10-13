@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Montserrat Regular";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   src: local("Montserrat Regular"),
@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat Thin";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 300;
   src: local("Montserrat Thin"),
@@ -15,7 +15,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat ExtraLight";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 100;
   src: local("Montserrat ExtraLight"),
@@ -23,7 +23,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat Light";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 200;
   src: local("Montserrat Light"),
@@ -31,7 +31,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat Medium";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   src: local("Montserrat Medium"),
@@ -39,7 +39,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat SemiBold";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   src: local("Montserrat SemiBold"),
@@ -47,7 +47,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat Bold";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   src: local("Montserrat Bold"),
@@ -55,7 +55,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat ExtraBold";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 800;
   src: local("Montserrat ExtraBold"),
@@ -63,7 +63,7 @@
 }
 
 @font-face {
-  font-family: "Montserrat Black";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 900;
   src: local("Montserrat Black"),
@@ -72,9 +72,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Montserrat", "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: "Montserrat", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
