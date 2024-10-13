@@ -1,0 +1,47 @@
+.main_banner {
+  position: relative;
+  padding: 80px 40px;
+
+  min-height: 600px;
+
+  background-image: url("../../assets/images/main_banner.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.main_banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.main_slogan {
+  position: relative;
+
+  margin-bottom: 40px;
+
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 110%;
+
+  color: white;
+}
+
+.main_cta_btn {
+  position: relative;
+  padding: 16px 56px;
+
+  border-radius: 6px;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+
+  background-color: #0d50ff;
+}
