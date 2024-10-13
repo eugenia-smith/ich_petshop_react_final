@@ -1,0 +1,18 @@
+.category_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.category_img img {
+  border-radius: 12px;
+
+  width: 316px;
+}
+
+.category_caption {
+  font-size: 20px;
+  font-weight: 500;
+  color: #282828;
+}
