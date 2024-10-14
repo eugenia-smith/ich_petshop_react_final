@@ -12,22 +12,26 @@ function Categories() {
   }, []);
 
   return (
-    <main className={styles.main_container}>
-      <section className={styles.main_categories}>
-        <div className={styles.main_categories_header}>
-          <h2 className={styles.section_heading}>All categories</h2>
+    <section className={styles.main_categories}>
+      <div className={styles.main_categories_header}>
+        <div className={styles.breadcrumbs}>
+          <Link to={"/"}>
+            <div>Main page</div>
+          </Link>
+          <div>Categories</div>
         </div>
-        <ul className={styles.categories_list}>
-          {categories.map((elem, index) => (
-            <li key={index}>
-              <Link to={"/categories/" + elem.id}>
-                <CategoryCard elem={elem} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </main>
+        <h2 className={styles.section_heading}>Categories</h2>
+      </div>
+      <ul className={styles.categories_list}>
+        {categories.map((elem, index) => (
+          <li key={index}>
+            <Link to={"/categories/" + elem.id}>
+              <CategoryCard elem={elem} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
