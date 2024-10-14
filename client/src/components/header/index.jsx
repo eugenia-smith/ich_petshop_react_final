@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router-dom";
+
 import styles from "./styles.module.css";
 import mainLogo from "../../assets/icons/main_logo_icon.svg";
 import basketIcon from "../../assets/icons/basket_icon.svg";
@@ -11,16 +13,16 @@ function Header() {
       <nav className={styles.main_nav_container}>
         <ul className={styles.nav_list}>
           <li className={styles.nav_item}>
-            <a href="">Main page</a>
+            <Link to="/">Main page</Link>
           </li>
           <li className={styles.nav_item}>
-            <a href="">Categories</a>
+            <Link to="/categories">Categories</Link>
           </li>
           <li className={styles.nav_item}>
-            <a href="">All products</a>
+            <Link to="/products">All products</Link>
           </li>
           <li className={styles.nav_item}>
-            <a href="">All sales</a>
+            <Link to="/sales">All sales</Link>
           </li>
         </ul>
       </nav>

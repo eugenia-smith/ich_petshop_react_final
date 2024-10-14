@@ -84,7 +84,7 @@ code {
 }
 
 #root {
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 
   width: 100vw;
   max-width: 1440px;

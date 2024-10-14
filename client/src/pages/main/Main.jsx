@@ -1,23 +1,18 @@
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+
 import CategoryCard from "../../components/categoryCard";
+import SaleCard from "../../components/saleCard";
 import formImage from "../../assets/images/form_image.png";
+
+import { fetchCategories, fetchSales } from "../../helpers/fetch";
 
 function Main() {
   const [categories, setCategories] = useState([]);
-  const fetchCategories = async () => {
-    try {
-      const { data: response } = await axios.get(
-        "http://localhost:3333/categories/all"
-      );
-      setCategories(response);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
+  const [sales, setSales] = useState([]);
   useEffect(() => {
-    fetchCategories();
+    fetchCategories(setCategories);
+    fetchSales(setSales);
   }, []);
 
   return (
@@ -67,6 +62,20 @@ function Main() {
             <input type="submit" value="Get a discount" />
           </form>
         </div>
+      </section>
+
+      <section className={styles.sales_section}>
+        <div className={styles.main_categories_header}>
+          <h2 className={styles.section_heading}>Sales</h2>
+          <a href="#">All sales</a>
+        </div>
+        <ul className={styles.categories_list}>
+          {sales.slice(0, 4).map((elem, index) => (
+            <li key={index}>
+              <SaleCard elem={elem} />
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );
