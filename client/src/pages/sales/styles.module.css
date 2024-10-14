@@ -48,3 +48,23 @@
 .breadcrumbs div:nth-child(2) {
   color: #282828;
 }
+
+.filters_container {
+  margin: 40px 0;
+}
+
+.filters_container,
+.filters_container label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.price_range_container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
