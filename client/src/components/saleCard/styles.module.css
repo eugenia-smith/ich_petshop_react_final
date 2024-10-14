@@ -29,11 +29,14 @@
 }
 
 .sale_item_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-bottom: 1px solid #ddd;
 }
 
 .sale_item_image img {
-  max-width: 316px;
+  height: 284px;
 }
 
 .sale_item_description,

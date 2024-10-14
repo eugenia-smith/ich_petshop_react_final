@@ -14,22 +14,27 @@ function Products() {
   }, []);
 
   return (
-    <main className={styles.main_container}>
-      <section className={styles.sales_section}>
-        <div className={styles.main_categories_header}>
-          <h2 className={styles.section_heading}>All products</h2>
-        </div>
-        <ul className={styles.categories_list}>
-          {products.map((elem, index) => (
-            <li key={index}>
-              <Link to={"/products/" + elem.id}>
-                <SaleCard elem={elem} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </main>
+    <section className={styles.products_section}>
+      <div className={styles.breadcrumbs}>
+        <Link to={"/"}>
+          <div>Main page</div>
+        </Link>
+        <div>All products</div>
+      </div>
+
+      <div className={styles.main_categories_header}>
+        <h2 className={styles.section_heading}>All products</h2>
+      </div>
+      <ul className={styles.categories_list}>
+        {products.map((elem, index) => (
+          <li key={index}>
+            <Link to={"/products/" + elem.id}>
+              <SaleCard elem={elem} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
