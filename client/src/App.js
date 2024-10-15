@@ -10,21 +10,33 @@ import Products from "./pages/products/Products";
 import Product from "./pages/product/Product";
 import Sales from "./pages/sales/Sales";
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/categories/:categoryId" element={<Category />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:productId" element={<Product />} />
-          <Route path="/sales" element={<Sales />} />
-        </Routes>
-        <Footer />
-      </div>
+      <ScrollToTop />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/:categoryId" element={<Category />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:productId" element={<Product />} />
+        <Route path="/sales" element={<Sales />} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

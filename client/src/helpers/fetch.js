@@ -33,12 +33,13 @@ export const fetchProducts = async (setter) => {
   }
 };
 
-export const fetchProduct = async (setter, id) => {
+export const fetchProduct = async (setProduct, setCategory, id) => {
   try {
     const { data: response } = await axios.get(
       `http://localhost:3333/products/${id}`
     );
-    setter(response[0]);
+    setProduct(response[0]);
+    fetchCategory(setCategory, response[0].categoryId);
   } catch (error) {
     console.error(error.message);
   }

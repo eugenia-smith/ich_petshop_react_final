@@ -8,7 +8,7 @@
 .category_img img {
   border-radius: 12px;
 
-  width: 316px;
+  max-width: 316px;
 }
 
 .category_caption {

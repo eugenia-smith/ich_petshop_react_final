@@ -106,7 +106,11 @@ code {
 }
 
 .custom-btn.ant-btn > span {
-  color: white; /* Белый текст */
+  color: white;
+}
+
+main {
+  padding: 80px 40px;
 }
 
 #root {

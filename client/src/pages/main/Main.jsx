@@ -7,6 +7,8 @@ import formImage from "../../assets/images/form_image.png";
 
 import { fetchCategories, fetchSales } from "../../helpers/fetch";
 
+import { Link } from "react-router-dom";
+
 function Main() {
   const [categories, setCategories] = useState([]);
   const [sales, setSales] = useState([]);
@@ -21,15 +23,15 @@ function Main() {
         <p className={styles.main_slogan}>
           Amazing Discounts <br /> on Pets Products!
         </p>
-        <a href="#" className={styles.main_cta_btn}>
+        <Link to="/sales" className={styles.main_cta_btn}>
           Check out
-        </a>
+        </Link>
       </section>
 
       <section className={styles.main_categories}>
         <div className={styles.main_categories_header}>
           <h2 className={styles.section_heading}>Categories</h2>
-          <a href="#">All categories</a>
+          <Link to="/categories">All categories</Link>
         </div>
         <ul className={styles.categories_list}>
           {categories.slice(0, 4).map((elem, index) => (
@@ -67,7 +69,7 @@ function Main() {
       <section className={styles.sales_section}>
         <div className={styles.main_categories_header}>
           <h2 className={styles.section_heading}>Sales</h2>
-          <a href="#">All sales</a>
+          <Link to="/sales">All sales</Link>
         </div>
         <ul className={styles.categories_list}>
           {sales.slice(0, 4).map((elem, index) => (

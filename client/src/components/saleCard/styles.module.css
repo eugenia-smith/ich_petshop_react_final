@@ -73,3 +73,32 @@
   color: #8b8b8b;
   text-decoration: line-through;
 }
+
+.sale_item {
+  position: relative;
+  overflow: hidden;
+}
+
+.sale_item:hover .add_to_cart_button {
+  display: block; /* Показываем кнопку при наведении на карточку */
+}
+
+.add_to_cart_button > span {
+  color: white;
+}
+
+.add_to_cart_button {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateX(50%);
+
+  min-width: 258px;
+  min-height: 58px;
+
+  background-color: #0d50ff;
+
+  font-size: 20px;
+  font-weight: 600;
+}
