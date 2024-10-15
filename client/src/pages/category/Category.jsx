@@ -1,36 +1,45 @@
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import CategoryCard from "../../components/categoryCard";
+import { useParams, Link } from "react-router-dom";
 import SaleCard from "../../components/saleCard";
+import ProductsFilter from "../../components/productsFilter";
+import Breadcrumbs from "../../components/breadcrumbs";
 
 import { fetchCategory } from "../../helpers/fetch";
 
 function Category() {
-  const [category, setCategory] = useState([]);
+  const [serverData, setServerData] = useState({
+    category: {},
+    data: [],
+  });
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   const { categoryId } = useParams();
   useEffect(() => {
-    fetchCategory(setCategory, categoryId);
+    fetchCategory(setServerData, categoryId);
   }, []);
   return (
     <main className={styles.main_container}>
+      <Breadcrumbs
+        parents={[
+          { title: "Main page", path: "/" },
+          { title: "Categories", path: "/categories" },
+        ]}
+        title={serverData.category.title}
+      />
       <section className={styles.main_categories}>
-        {"category" in category ? (
-          <CategoryCard elem={category.category} />
-        ) : (
-          <></>
-        )}
-        {"data" in category ? (
-          <ul className={styles.categories_list}>
-            {category.data.map((elem, index) => (
-              <li key={index}>
-                <SaleCard elem={elem} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <></>
-        )}
+        <h2 className={styles.section_heading}>{serverData.category.title}</h2>
+        <ProductsFilter
+          products={serverData.data}
+          setProducts={setFilteredProducts}
+        />
+        <ul className={styles.categories_list}>
+          {filteredProducts.map((elem, index) => (
+            <li key={index}>
+              <SaleCard elem={elem} />
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );

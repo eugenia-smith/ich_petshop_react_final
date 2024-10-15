@@ -5,11 +5,14 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "antd";
 
+import Breadcrumbs from "../../components/breadcrumbs";
+
 function Product() {
   const [product, setProduct] = useState({});
+  const [category, setCategory] = useState({ category: {} });
   const { productId } = useParams();
   useEffect(() => {
-    fetchProduct(setProduct, productId);
+    fetchProduct(setProduct, setCategory, productId);
   }, []);
 
   const hasDiscount =
@@ -17,18 +20,17 @@ function Product() {
 
   return (
     <main className={styles.main_container}>
-      <div className={styles.breadcrumbs}>
-        <Link to={"/"}>
-          <div>Main page</div>
-        </Link>
-        <Link to={"/categories"}>
-          <div>Categories</div>
-        </Link>
-        <Link to={"/dry-wet-food"}>
-          <div>Dry & Wet Food</div>
-        </Link>
-        <div>{product.title}</div>
-      </div>
+      <Breadcrumbs
+        parents={[
+          { title: "Main page", path: "/" },
+          { title: "Categories", path: "/categories" },
+          {
+            title: category.category.title,
+            path: "/categories/" + category.category.id,
+          },
+        ]}
+        title={product.title}
+      />
 
       <section className={styles.product_info}>
         <div className={styles.product_photo_container}>

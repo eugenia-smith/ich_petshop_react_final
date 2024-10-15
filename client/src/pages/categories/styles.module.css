@@ -1,6 +1,6 @@
-.main_categories {
+/* .main_categories {
   padding: 40px 32px;
-}
+} */
 
 .section_heading {
   margin-bottom: 40px;
@@ -10,41 +10,4 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-}
-
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.breadcrumbs div {
-  position: relative;
-
-  padding: 8px 16px;
-  margin-bottom: 40px;
-
-  border: 1px solid #dddddd;
-  border-radius: 6px;
-
-  font-size: 16px;
-  font-weight: 500;
-  color: #8b8b88;
-}
-
-.breadcrumbs div:first-child::after {
-  content: "";
-
-  position: absolute;
-  top: 50%;
-  right: -17px;
-
-  width: 16px;
-  height: 1px;
-
-  background-color: #dddddd;
-}
-
-.breadcrumbs div:nth-child(2) {
-  color: #282828;
 }

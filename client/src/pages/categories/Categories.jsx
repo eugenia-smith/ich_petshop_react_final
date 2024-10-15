@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CategoryCard from "../../components/categoryCard";
+import Breadcrumbs from "../../components/breadcrumbs";
 
 import { fetchCategories } from "../../helpers/fetch";
 
@@ -12,14 +13,12 @@ function Categories() {
   }, []);
 
   return (
-    <section className={styles.main_categories}>
+    <main className={styles.main_categories}>
       <div className={styles.main_categories_header}>
-        <div className={styles.breadcrumbs}>
-          <Link to={"/"}>
-            <div>Main page</div>
-          </Link>
-          <div>Categories</div>
-        </div>
+        <Breadcrumbs
+          parents={[{ title: "Main page", path: "/" }]}
+          title="Categories"
+        />
         <h2 className={styles.section_heading}>Categories</h2>
       </div>
       <ul className={styles.categories_list}>
@@ -31,7 +30,7 @@ function Categories() {
           </li>
         ))}
       </ul>
-    </section>
+    </main>
   );
 }
 
