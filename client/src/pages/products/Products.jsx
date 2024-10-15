@@ -61,7 +61,7 @@ function Products() {
 
           <label>
             Discounted items
-            <Checkbox />
+            <Checkbox className="custom-checkbox" />
           </label>
           <label>
             Sorted

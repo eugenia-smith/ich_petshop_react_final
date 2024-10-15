@@ -33,6 +33,17 @@ export const fetchProducts = async (setter) => {
   }
 };
 
+export const fetchProduct = async (setter, id) => {
+  try {
+    const { data: response } = await axios.get(
+      `http://localhost:3333/products/${id}`
+    );
+    setter(response[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
 export const fetchSales = async (setter) => {
   try {
     const { data: response } = await axios.get(

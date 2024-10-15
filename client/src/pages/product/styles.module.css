@@ -1,0 +1,147 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.breadcrumbs div {
+  position: relative;
+
+  padding: 8px 16px;
+  margin-bottom: 40px;
+
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #8b8b88;
+}
+
+.breadcrumbs div:first-child::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  right: -17px;
+
+  width: 16px;
+  height: 1px;
+
+  background-color: #dddddd;
+}
+
+.breadcrumbs div:nth-child(4) {
+  color: #282828;
+}
+
+.product_info {
+  display: flex;
+  gap: 32px;
+}
+
+.product_img_placeholder {
+  width: 150px;
+  height: auto;
+}
+
+.product_main_img {
+  max-width: 548px;
+  max-height: 572px;
+  align-self: center;
+  justify-self: center;
+  grid-row: span 3;
+}
+
+.product_photo_container {
+  display: grid;
+  grid-template-columns: 1fr 548px;
+  grid-template-rows: repeat (3, 1fr);
+  grid-auto-flow: column dense;
+  column-gap: 32px;
+  row-gap: 16px;
+}
+
+.product_order {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.product_order h3 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 110%;
+  color: #282828;
+}
+
+.price_container {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.current_price {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 110%;
+}
+
+.previous_price {
+  font-size: 40px;
+  font-weight: 500;
+  color: #8b8b8b;
+  text-decoration: line-through;
+}
+
+.discount_sum {
+  align-self: flex-start;
+
+  padding: 4px 8px;
+
+  border-radius: 6px;
+
+  background-color: #0d50ff;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.controls_container {
+  display: flex;
+  gap: 32px;
+}
+
+.counter_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 58px;
+  min-width: 200px;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: #282828;
+}
+
+.counter_container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 58px;
+  height: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+
+  background-color: transparent;
+}
+
+.product_description h5 {
+  margin-bottom: 16px;
+
+  font-size: 20px;
+  font-weight: 600;
+}
