@@ -1,0 +1,37 @@
+.cart_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 40px;
+}
+
+.cart_header a {
+  position: relative;
+
+  padding: 8px 16px;
+
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #8b8b88;
+}
+
+.cart_header a::before {
+  content: "";
+  position: absolute;
+
+  top: 50%;
+  right: 142px;
+
+  width: 632px;
+  height: 1px;
+
+  background-color: #dddddd;
+}
+
+.order_details {
+  display: flex;
+}

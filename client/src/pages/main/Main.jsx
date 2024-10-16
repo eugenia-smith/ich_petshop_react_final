@@ -1,13 +1,11 @@
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import CategoryCard from "../../components/categoryCard";
 import SaleCard from "../../components/saleCard";
 import formImage from "../../assets/images/form_image.png";
 
 import { fetchCategories, fetchSales } from "../../helpers/fetch";
-
-import { Link } from "react-router-dom";
 
 function Main() {
   const [categories, setCategories] = useState([]);

@@ -29,7 +29,9 @@ function Header() {
         </ul>
       </nav>
       <div className={styles.main_basket_link}>
-        <img src={basketIcon} alt="" />
+        <Link to="/cart">
+          <img src={basketIcon} alt="" />
+        </Link>
       </div>
     </header>
   );
