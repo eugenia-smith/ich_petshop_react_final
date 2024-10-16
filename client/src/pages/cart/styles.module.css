@@ -38,6 +38,12 @@
   gap: 32px;
 }
 
+.order_items {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .order_form_container {
   display: flex;
   flex-direction: column;

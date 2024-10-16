@@ -1,8 +1,25 @@
 import styles from "./styles.module.css";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 function SaleCard({ elem }) {
+  const dispatch = useDispatch();
+
+  function sendToCart() {
+    const item = {
+      id: elem.id,
+      image: `http://localhost:3333/${elem.image}`,
+      title: elem.title,
+      price: elem.discont_price ? elem.price : elem.discont_price,
+      discont_price: elem.discont_price ? elem.discont_price : elem.price,
+      quantity: 1, // По умолчанию добавляем 1 товар
+    };
+
+    dispatch(addToCart(item));
+  }
+
   const hasDiscount =
     elem.discont_price !== null && elem.discont_price < elem.price;
 
@@ -32,7 +49,11 @@ function SaleCard({ elem }) {
           </div>
         </div>
 
-        <Button type="primary" className={styles.add_to_cart_button}>
+        <Button
+          onClick={sendToCart}
+          type="primary"
+          className={styles.add_to_cart_button}
+        >
           Add to cart
         </Button>
       </article>

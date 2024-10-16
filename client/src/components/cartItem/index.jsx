@@ -1,19 +1,26 @@
 import styles from "./styles.module.css";
-import imgPlaceholder from "../../assets/images/img_placeholder.png";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../redux/slices/cartSlice";
 
-function CartItem() {
+function CartItem({ item }) {
+  const dispatch = useDispatch();
+
+  function handleRemove(id) {
+    dispatch(removeFromCart(id));
+  }
+
   return (
     <article className={styles.cart_item}>
       <picture>
         <img
-          src={imgPlaceholder}
+          src={item.image}
           alt=""
           style={{ width: "200px", height: "180px" }}
         />
       </picture>
       <div className={styles.cart_item_header}>
-        <h4 className={styles.cart_item_heading}>Custom heading</h4>
-        <button type="button">
+        <h4 className={styles.cart_item_heading}>{item.title}</h4>
+        <button onClick={() => handleRemove(item.id)} type="button">
           <svg
             width="24"
             height="24"
@@ -58,7 +65,7 @@ function CartItem() {
                 />
               </svg>
             </button>
-            <p>1</p>
+            <p>{item.quantity}</p>
             <button type="button">
               <svg
                 width="24"
@@ -86,8 +93,8 @@ function CartItem() {
           </div>
         </div>
         <div className={styles.price_container}>
-          <p className={styles.current_price}>$..</p>
-          <p className={styles.previuos_price}>$..</p>
+          <p className={styles.current_price}>${item.discont_price}</p>
+          <p className={styles.previous_price}>${item.price}</p>
         </div>
       </div>
     </article>
