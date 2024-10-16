@@ -93,7 +93,11 @@ function Main() {
               type="tel"
               name="telephone"
               placeholder="Phone number"
-              {...register("telephone", { required: true })}
+              {...register("telephone", {
+                required: true,
+                pattern:
+                  /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,4}[-\s.]?[0-9]{1,4}$/,
+              })}
             />
             {errors.telephone && (
               <p className={styles.error}>The field cannot be empty!</p>

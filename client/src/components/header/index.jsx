@@ -1,10 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectItemsCount } from "../../redux/slices/cartSlice";
 
 import styles from "./styles.module.css";
 import mainLogo from "../../assets/icons/main_logo_icon.svg";
 import basketIcon from "../../assets/icons/basket_icon.svg";
 
 function Header() {
+  const itemsCount = useSelector(selectItemsCount);
+
   return (
     <header className={styles.main_header}>
       <picture className={styles.main_logo}>
@@ -31,6 +35,9 @@ function Header() {
       <div className={styles.main_basket_link}>
         <Link to="/cart">
           <img src={basketIcon} alt="" />
+          {itemsCount > 0 && (
+            <span className={styles.items_count}>{itemsCount}</span>
+          )}
         </Link>
       </div>
     </header>

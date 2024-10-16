@@ -24,8 +24,8 @@ function SaleCard({ elem }) {
     elem.discont_price !== null && elem.discont_price < elem.price;
 
   return (
-    <Link to={"/products/" + elem.id}>
-      <article className={styles.sale_item}>
+    <article className={styles.sale_item}>
+      <Link to={"/products/" + elem.id}>
         {hasDiscount && (
           <p className={styles.discount_sum}>
             {Math.floor(100 - (elem.discont_price * 100) / elem.price)}%
@@ -48,16 +48,15 @@ function SaleCard({ elem }) {
             )}
           </div>
         </div>
-
-        <Button
-          onClick={sendToCart}
-          type="primary"
-          className={styles.add_to_cart_button}
-        >
-          Add to cart
-        </Button>
-      </article>
-    </Link>
+      </Link>
+      <Button
+        onClick={sendToCart}
+        type="primary"
+        className={styles.add_to_cart_button}
+      >
+        Add to cart
+      </Button>
+    </article>
   );
 }
 

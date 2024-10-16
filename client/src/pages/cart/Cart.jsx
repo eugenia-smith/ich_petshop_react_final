@@ -1,15 +1,63 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import styles from "./styles.module.css";
 import CartItem from "../../components/cartItem";
+import { Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../../redux/slices/cartSlice";
+import { selectItemsCount, selectItemsSum } from "../../redux/slices/cartSlice";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+
+import { clearCart } from "../../redux/slices/cartSlice";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch;
+  const itemsCount = useSelector(selectItemsCount);
+  const itemsSum = useSelector(selectItemsSum);
 
-  function handleRemove(id) {
-    dispatch(removeFromCart(id));
+  const dispatch = useDispatch();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  async function submitData(data) {
+    const sendData = {
+      form: data,
+      cart: cartItems,
+    };
+    console.log("Sending data");
+    console.log(sendData);
+    try {
+      const response = await axios.post(
+        "http://localhost:3333/order/send",
+        sendData
+      );
+      console.log(response.data);
+
+      if (response.data.status === "OK") {
+        console.log("Data sent!");
+        showModal();
+        dispatch(clearCart());
+        reset();
+      }
+    } catch (error) {
+      console.error("Failed to send", error);
+    }
   }
 
   return (
@@ -36,20 +84,55 @@ function Cart() {
               </ul>
               <div className={styles.order_form_container}>
                 <h3 className={styles.order_form_heading}>Order details</h3>
-                <p>... items</p>
+                <p>{itemsCount} items</p>
                 <div className={styles.total_sum}>
                   <p>Total</p>
-                  <p className={styles.sum}>$</p>
+                  <p className={styles.sum}>${itemsSum}</p>
                 </div>
-                <form className={styles.order_form} action="">
-                  <input type="text" name="username" id="" placeholder="Name" />
+
+                <form
+                  className={styles.order_form}
+                  onSubmit={handleSubmit(submitData)}
+                >
+                  <input
+                    type="text"
+                    name="username"
+                    id=""
+                    placeholder="Name"
+                    {...register("username", { required: true })}
+                  />
+                  {errors.username && (
+                    <p className={styles.error}>The field cannot be empty!</p>
+                  )}
+
                   <input
                     type="tel"
                     name="telephone"
-                    id=""
                     placeholder="Phone number"
+                    {...register("telephone", {
+                      required: true,
+                      pattern:
+                        /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,4}[-\s.]?[0-9]{1,4}$/,
+                    })}
                   />
-                  <input type="email" name="email" id="" placeholder="Email" />
+                  {errors.username && (
+                    <p className={styles.error}>Invalid format!</p>
+                  )}
+
+                  <input
+                    type="email"
+                    name="email"
+                    id=""
+                    placeholder="Email"
+                    {...register("email", {
+                      required: true,
+                      pattern: /^\S+@\S+$/i,
+                    })}
+                  />
+                  {errors.email && (
+                    <p className={styles.error}>Check your email!</p>
+                  )}
+
                   <input type="submit" value="Order" />
                 </form>
               </div>
@@ -57,6 +140,19 @@ function Cart() {
           </>
         )}
       </section>
+      <>
+        <Modal
+          title="Congratulations"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <p>
+            Your order has been successfully placed on the website. A manager
+            will contact you shortly to confirm your order.
+          </p>
+        </Modal>
+      </>
     </main>
   );
 }

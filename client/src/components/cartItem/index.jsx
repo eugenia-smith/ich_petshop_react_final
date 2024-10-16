@@ -1,9 +1,19 @@
 import styles from "./styles.module.css";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../redux/slices/cartSlice";
+import { addToCart, removeFromCart } from "../../redux/slices/cartSlice";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
+  function handleInc(item) {
+    dispatch(addToCart({ ...item, quantity: 1 }));
+  }
+  function handleDec(item) {
+    if (item.quantity > 1) {
+      dispatch(addToCart({ ...item, quantity: -1 }));
+    } else {
+      dispatch(removeFromCart(item.id));
+    }
+  }
 
   function handleRemove(id) {
     dispatch(removeFromCart(id));
@@ -31,9 +41,9 @@ function CartItem({ item }) {
             <path
               d="M18 6L6 18"
               stroke="#282828"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M6 6L18 18"
@@ -48,7 +58,7 @@ function CartItem({ item }) {
       <div className={styles.count_and_price}>
         <div className={styles.controls_container}>
           <div className={styles.counter_container}>
-            <button type="button">
+            <button type="button" onClick={() => handleDec(item)}>
               <svg
                 width="24"
                 height="24"
@@ -66,7 +76,7 @@ function CartItem({ item }) {
               </svg>
             </button>
             <p>{item.quantity}</p>
-            <button type="button">
+            <button type="button" onClick={() => handleInc(item)}>
               <svg
                 width="24"
                 height="24"
@@ -94,7 +104,9 @@ function CartItem({ item }) {
         </div>
         <div className={styles.price_container}>
           <p className={styles.current_price}>${item.discont_price}</p>
-          <p className={styles.previous_price}>${item.price}</p>
+          <p className={styles.previous_price}>
+            {item.price ? "$" + item.price : ""}
+          </p>
         </div>
       </div>
     </article>

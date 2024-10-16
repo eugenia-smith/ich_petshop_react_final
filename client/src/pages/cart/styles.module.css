@@ -112,3 +112,9 @@
   font-weight: 500px;
   color: #8b8b8b;
 }
+
+.order_form_container .error {
+  font-size: 20px;
+  font-weight: 500;
+  color: tomato;
+}

@@ -1,6 +1,5 @@
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import CategoryCard from "../../components/categoryCard";
 import Breadcrumbs from "../../components/breadcrumbs";
 
@@ -24,9 +23,7 @@ function Categories() {
       <ul className={styles.categories_list}>
         {categories.map((elem, index) => (
           <li key={index}>
-            <Link to={"/categories/" + elem.id}>
-              <CategoryCard elem={elem} />
-            </Link>
+            <CategoryCard elem={elem} />
           </li>
         ))}
       </ul>

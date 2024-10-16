@@ -2,8 +2,10 @@ import styles from "./styles.module.css";
 import imgPlaceholder from "../../assets/images/img_placeholder.png";
 import { fetchProduct } from "../../helpers/fetch";
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Button } from "antd";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 import Breadcrumbs from "../../components/breadcrumbs";
 
@@ -11,9 +13,28 @@ function Product() {
   const [product, setProduct] = useState({});
   const [category, setCategory] = useState({ category: {} });
   const { productId } = useParams();
+  const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+
+  function sendToCart() {
+    const item = {
+      id: product.id,
+      image: `http://localhost:3333/${product.image}`,
+      title: product.title,
+      price: product.discont_price ? product.price : product.discont_price,
+      discont_price: product.discont_price
+        ? product.discont_price
+        : product.price,
+      quantity: quantity, // По умолчанию добавляем 1 товар
+    };
+
+    dispatch(addToCart(item));
+  }
+
   useEffect(() => {
     fetchProduct(setProduct, setCategory, productId);
-  }, []);
+  }, [productId]);
 
   const hasDiscount =
     product.discont_price !== null && product.discont_price < product.price;
@@ -79,7 +100,10 @@ function Product() {
           </div>
           <div className={styles.controls_container}>
             <div className={styles.counter_container}>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+              >
                 <svg
                   width="24"
                   height="24"
@@ -96,8 +120,8 @@ function Product() {
                   />
                 </svg>
               </button>
-              <p>1</p>
-              <button type="button">
+              <p>{quantity}</p>
+              <button type="button" onClick={() => setQuantity(quantity + 1)}>
                 <svg
                   width="24"
                   height="24"
@@ -122,7 +146,7 @@ function Product() {
                 </svg>
               </button>
             </div>
-            <Button type="primary" className="custom-btn">
+            <Button type="primary" className="custom-btn" onClick={sendToCart}>
               Add to cart
             </Button>
           </div>
