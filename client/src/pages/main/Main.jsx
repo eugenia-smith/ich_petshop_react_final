@@ -1,6 +1,8 @@
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 import CategoryCard from "../../components/categoryCard";
 import SaleCard from "../../components/saleCard";
 import formImage from "../../assets/images/form_image.png";
@@ -14,6 +16,30 @@ function Main() {
     fetchCategories(setCategories);
     fetchSales(setSales);
   }, []);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  async function submitData(data) {
+    try {
+      const response = await axios.post(
+        "http://localhost:3333/sale/send",
+        data
+      );
+      console.log(response.data); //что там с сервером...?
+
+      if (response.data.status === "OK") {
+        console.log("Data sent!");
+        reset();
+      }
+    } catch (error) {
+      console.error("Failed to send", error);
+    }
+  }
 
   return (
     <main className={styles.main_container}>
@@ -50,15 +76,35 @@ function Main() {
             <img src={formImage} alt="" />
           </picture>
 
-          <form className={styles.discount_form} action="">
-            <input type="text" name="username" id="" placeholder="Name" />
+          <form
+            className={styles.discount_form}
+            onSubmit={handleSubmit(submitData)}
+          >
+            <input
+              type="text"
+              name="username"
+              placeholder="Name"
+              {...register("username", { required: true })}
+            />
+            {errors.username && (
+              <p className={styles.error}>The field cannot be empty!</p>
+            )}
             <input
               type="tel"
               name="telephone"
-              id=""
               placeholder="Phone number"
+              {...register("telephone", { required: true })}
             />
-            <input type="email" name="email" id="" placeholder="Email" />
+            {errors.telephone && (
+              <p className={styles.error}>The field cannot be empty!</p>
+            )}
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+            />
+            {errors.email && <p className={styles.error}>Check your email!</p>}
             <input type="submit" value="Get a discount" />
           </form>
         </div>
