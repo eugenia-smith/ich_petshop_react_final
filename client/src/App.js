@@ -9,6 +9,8 @@ import Category from "./pages/category/Category";
 import Products from "./pages/products/Products";
 import Product from "./pages/product/Product";
 import Sales from "./pages/sales/Sales";
+import Cart from "./pages/cart/Cart";
+import ErrorPage from "./pages/404/404";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -35,6 +37,8 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<Product />} />
         <Route path="/sales" element={<Sales />} />
+        <Route path="/404" element={<ErrorPage />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>

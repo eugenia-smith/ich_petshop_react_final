@@ -1,5 +1,6 @@
 import styles from "./styles.module.css";
 import errorImg from "../../assets/images/404.png";
+import { Link } from "react-router-dom";
 
 function ErrorPage() {
   return (
@@ -15,9 +16,9 @@ function ErrorPage() {
             Please go back to the homepage.
           </p>
         </div>
-        <button className={styles.error_btn} type="button">
+        <Link to="/" className={styles.error_btn}>
           Go Home
-        </button>
+        </Link>
       </section>
     </main>
   );
