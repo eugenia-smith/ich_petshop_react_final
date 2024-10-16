@@ -1,0 +1,39 @@
+.error_contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+.error_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.error_description p {
+  max-width: 664px;
+
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #8b8b8b;
+}
+
+.error_btn {
+  min-height: 58px;
+  border: none;
+  border-radius: 6px;
+
+  padding: 16px 56px;
+
+  background-color: #0d50ff;
+  font-size: 20px;
+  font-weight: 600px;
+
+  color: white;
+}
