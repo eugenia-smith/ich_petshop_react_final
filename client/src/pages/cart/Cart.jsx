@@ -22,11 +22,11 @@ function Cart() {
             </li>
           </ul>
           <div className={styles.order_form_container}>
-            <h3>Order details</h3>
+            <h3 className={styles.order_form_heading}>Order details</h3>
             <p>... items</p>
             <div className={styles.total_sum}>
               <p>Total</p>
-              <p className={styles.sum}></p>
+              <p className={styles.sum}>$</p>
             </div>
             <form className={styles.order_form} action="">
               <input type="text" name="username" id="" placeholder="Name" />

@@ -37,3 +37,72 @@
   grid-template-columns: 1fr 548px;
   gap: 32px;
 }
+
+.order_form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 12px;
+
+  background-color: #f1f3f4;
+}
+
+.order_form_heading,
+.order_form_container p {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.order_form_container p,
+.total_sum p {
+  font-weight: 500;
+  color: #8b8b8b;
+}
+
+.total_sum {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.total_sum .sum {
+  font-size: 64px;
+  font-weight: 700;
+  color: #282828;
+}
+
+.order_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order_form input {
+  padding: 16px 32px;
+
+  width: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+
+  background-color: white;
+}
+
+.order_form input:last-child {
+  border: none;
+  border-radius: 6px;
+
+  background-color: #0d50ff;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+
+  cursor: pointer;
+}
+
+.order_form input::placeholder {
+  font-size: 20px;
+  font-weight: 500px;
+  color: #8b8b8b;
+}
