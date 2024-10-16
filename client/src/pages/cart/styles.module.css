@@ -33,5 +33,7 @@
 }
 
 .order_details {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 548px;
+  gap: 32px;
 }

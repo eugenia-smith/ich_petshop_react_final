@@ -113,6 +113,10 @@ main {
   padding: 80px 40px;
 }
 
+button {
+  cursor: pointer;
+}
+
 #root {
   /* background-color: aquamarine; */
 

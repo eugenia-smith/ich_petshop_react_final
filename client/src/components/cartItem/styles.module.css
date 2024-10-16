@@ -1,0 +1,87 @@
+.cart_item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  column-gap: 32px;
+
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+.cart_item picture {
+  grid-row: span 2;
+}
+
+.cart_item_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 32px 32px 0 0;
+}
+
+.cart_item_heading {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.cart_item_header button {
+  border: none;
+  background-color: transparent;
+}
+
+.count_and_price {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  padding: 0 32px 32px 0;
+}
+
+.controls_container {
+  display: flex;
+  gap: 32px;
+}
+
+.counter_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 58px;
+  min-width: 200px;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: #282828;
+}
+
+.counter_container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 58px;
+  height: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+
+  background-color: transparent;
+}
+
+.price_container {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+}
+
+.current_price {
+  font-size: 40px;
+  font-weight: 600;
+}
+.previuos_price {
+  font-size: 20px;
+  color: #8b8b8b;
+  text-decoration: line-through;
+}

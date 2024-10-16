@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import CartItem from "../../components/cartItem";
 
 function Cart() {
   return (
@@ -15,7 +16,11 @@ function Cart() {
         </div>
 
         <div className={styles.order_details}>
-          <ul className={styles.order_items}></ul>
+          <ul className={styles.order_items}>
+            <li>
+              <CartItem />
+            </li>
+          </ul>
           <div className={styles.order_form_container}>
             <h3>Order details</h3>
             <p>... items</p>
