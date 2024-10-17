@@ -100,7 +100,7 @@ function Main() {
               })}
             />
             {errors.telephone && (
-              <p className={styles.error}>The field cannot be empty!</p>
+              <p className={styles.error}>Invalid format!</p>
             )}
             <input
               type="email"

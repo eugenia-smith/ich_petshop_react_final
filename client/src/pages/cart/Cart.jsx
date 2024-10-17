@@ -63,15 +63,21 @@ function Cart() {
   return (
     <main>
       <section className={styles.cart_container}>
+        <div className={styles.cart_header}>
+          <h2 className={styles.cart_heading}>Shopping Cart</h2>
+          <Link to="/products">Back to store</Link>
+        </div>
         {cartItems.length === 0 ? (
-          <h2>Your Cart is empty</h2>
+          <section className={styles.empty_container}>
+            <p className={styles.empty_text}>
+              Looks like you your basket is currently empty.
+            </p>
+            <Link to="/products" className={styles.empty_btn}>
+              Continue Shopping
+            </Link>
+          </section>
         ) : (
           <>
-            <div className={styles.cart_header}>
-              <h2 className={styles.cart_heading}>Shopping Cart</h2>
-              <Link to="/products">Back to store</Link>
-            </div>
-
             <div className={styles.order_details}>
               <ul className={styles.order_items}>
                 {cartItems.map((item) => {
